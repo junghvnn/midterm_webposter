@@ -1,51 +1,52 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>화면 속 작은 전시장</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./jquery.min.js" defer></script>
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="poster" aria-label="움직이는 전시 포스터. 카드에 마우스를 올리면 관람객이 나타납니다.">
-      <img class="background" src="./background.png" alt="대각선 전시 제목과 안내 문구가 놓인 밝은 바닥">
-      <div class="card-group group-a">
-        <div class="card-motion">
-          <div class="card card-a">
-            <img class="card-image" src="./A_card.png" alt="전시 카드 A">
-          </div>
+    <div class="poster">
+      <img class="background" src="background.png" alt="전시 배경" />
+
+      <!-- 카드 A와 관람객 -->
+      <div class="card card-a">
+        <div class="artwork">
+          <img class="card-image" src="A_card.png" alt="포스터 카드 A" />
         </div>
-        <div class="visitors visitors-a">
-          <img class="person person-a-0" src="./people-2.png" alt="">
-          <img class="person person-a-1" src="./people-5.png" alt="">
-        </div>
-      </div>
-      <div class="card-group group-b">
-        <div class="card-motion">
-          <div class="card card-b">
-            <img class="card-image" src="./B_card.png" alt="전시 카드 B">
-          </div>
-        </div>
-        <div class="visitors visitors-c">
-          <img class="person person-b-extra" src="./people-8.png" alt="">
-          <img class="person person-c-0" src="./people-1.png" alt="">
-          <img class="person person-c-1" src="./people-2.png" alt="">
-          <img class="person person-c-2" src="./people-3.png" alt="">
-          <img class="person person-c-3" src="./people-4.png" alt="">
+        <div class="people">
+          <img class="person person-a-0" src="people-2.png" alt="" />
+          <img class="person person-a-1" src="people-5.png" alt="" />
         </div>
       </div>
-      <div class="card-group group-c">
-        <div class="card-motion">
-          <div class="card card-c">
-            <img class="card-image" src="./C_card.png" alt="전시 카드 C">
-          </div>
+
+      <!-- 카드 B와 관람객 -->
+      <div class="card card-b">
+        <div class="artwork">
+          <img class="card-image" src="B_card.png" alt="포스터 카드 B" />
         </div>
-        <div class="visitors visitors-b">
-          <img class="person person-b-0" src="./people-7.png" alt="">
+        <div class="people">
+          <img class="person person-b-extra" src="people-8.png" alt="" />
+          <img class="person person-c-0" src="people-1.png" alt="" />
+          <img class="person person-c-1" src="people-2.png" alt="" />
+          <img class="person person-c-2" src="people-3.png" alt="" />
+          <img class="person person-c-3" src="people-4.png" alt="" />
         </div>
       </div>
-    </main>
+
+      <!-- 카드 C와 관람객 -->
+      <div class="card card-c">
+        <div class="artwork">
+          <img class="card-image" src="C_card.png" alt="포스터 카드 C" />
+        </div>
+        <div class="people">
+          <img class="person person-b-0" src="people-7.png" alt="" />
+        </div>
+      </div>
+    </div>
   </body>
 </html>
