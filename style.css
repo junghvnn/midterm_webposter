@@ -160,7 +160,7 @@ body {
   }
 }
 
-/* 마우스를 올리면 정지하고 사람이 나타납니다. */
+
 .card.is-paused .moving, .card.is-paused .people {
   animation-play-state: paused;
 }
@@ -168,7 +168,7 @@ body {
   opacity: 1;
 }
 
-/* 움직임 줄이기 설정 */
+
 @media (prefers-reduced-motion: reduce) {
   .card .moving, .card .people {
     animation: none;
