@@ -164,7 +164,7 @@ body {
 }
 
 /* 마우스를 올리면 정지하고 사람이 나타납니다. */
-.card.is-paused .artwork, .card.card.is-paused .people {
+.card.is-paused .artwork, .card.is-paused .people {
   animation-play-state: paused;
 }
 .card.is-paused .people {
