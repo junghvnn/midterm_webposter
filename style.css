@@ -126,18 +126,18 @@ body {
   width: 11.8%;
 }
 
-/* 카드별 움직임 */
+/* 카드별+사람 움직임 */
 .card-a .artwork, .card-a .people {
-  animation: move-a 10s ease-in-out infinite;
+  animation: move-a 14s ease-in-out infinite;
 }
 .card-b .artwork, .card-b .people {
-  animation: move-b 8.888888889s ease-in-out infinite;
+  animation: move-b 10s ease-in-out infinite;
 }
 .card-c .artwork, .card-c .people {
-  animation: move-c 10.83333333s ease-in-out infinite;
+  animation: move-c 12s ease-in-out infinite;
 }
-/* AI로 계산한 35도 이동값: 세로 이동 = 가로 이동 × tan(35도).
-가로값은 포스터 너비, 세로값은 높이를 기준으로 %로 바꿨습니다. */
+
+/* 포스터들 무빙 */
 @keyframes move-a {
   0%, 100% {
     transform: translate(0, 0);
