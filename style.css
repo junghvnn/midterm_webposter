@@ -61,7 +61,7 @@ body {
 .card-b .artwork { z-index: 3; }
 .card-c .artwork { z-index: 4; }
 
-/* 카드 이미지와 사람 위치 */
+/* 카드와 사람 위치 */
 
 .card-a .card-image {
   left: 71.885521886%;
