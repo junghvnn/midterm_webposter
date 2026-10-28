@@ -87,9 +87,9 @@ body {
   width: 11.355921743%;
 }
 .person-a-1 {
-  left: 1%;
-  top: 70%;
-  width: 14%;
+  left: 87%;
+  top: 66%;
+  width: 11%;
 }
 .person-b-0 {
   left: 9.910892028%;
@@ -139,7 +139,7 @@ body {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(11.7845117845%, -14.7206315005%);
+    transform: translate(2%, -2.4983014604%);
   }
 }
 @keyframes move-b {
