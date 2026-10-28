@@ -28,7 +28,7 @@ body {
   pointer-events: none;
 }
 
-/* 카드 공통: 관람객이 모든 작품 뒤에 있도록 그룹의 상자는 없앱니다. */
+/* 카드 공통 */
 .card {
   display: contents;
 }
