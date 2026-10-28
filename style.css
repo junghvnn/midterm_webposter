@@ -134,7 +134,6 @@ body {
 }
 
 /* 포스터들 무빙 */
-/* B/C: 배경 원본 글자 각도 34.24도와 평행하도록 이동값 계산 */
 @keyframes move-a {
   0%, 100% {
     transform: translate(0, 0);
