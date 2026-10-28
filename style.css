@@ -1,69 +1,195 @@
-/* 배경 원본 2048 × 1148. 좌표는 두 번째 참고 사진에 맞춰 지정했습니다. */
-* { box-sizing: border-box; }
-html, body { margin: 0; width: 100%; height: 100%; }
-body { display: grid; place-items: center; overflow: hidden; background: #b5b5b5; }
-.poster { position: relative; width: min(100vw, calc(100vh * 2048 / 1148)); aspect-ratio: 2048 / 1148; overflow: hidden; isolation: isolate; }
+/* 1. 화면과 배경 */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #b5b5b5;
+}
+.poster {
+  position: relative;
+  width: min(100vw, calc(100vh * 2048 / 1148));
+  aspect-ratio: 2048 / 1148;
+  overflow: hidden;
+  isolation: isolate;
+}
+.background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 2. 카드와 관람객 */
+/* 모든 관람객을 카드 뒤에 놓기 위해 그룹은 별도의 상자를 만들지 않습니다. */
+.card-group {
+  display: contents;
+}
+.card-motion, .visitors {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.card {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.card-image {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+.visitors {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.person {
+  position: absolute;
+  display: block;
+  height: auto;
+  pointer-events: none;
+}
+.group-a .card-motion {
+  z-index: 2;
+}
+.group-b .card-motion {
+  z-index: 3;
+}
+.group-c .card-motion {
+  z-index: 4;
+}
+
+/* 3. 카드와 인물의 위치 */
+.card-a {
+  left: 71.885521886%;
+  top: 5.405976138%;
+  width: 22.558922559%;
+  clip-path: polygon(17% 4%, 89% 32%, 89% 74%, 14% 100%, 14% 58%, 32% 51%, 17% 45%);
+}
+.card-b {
+  left: 22.138047138%;
+  top: -10.962118279%;
+  width: 39.393939394%;
+  clip-path: polygon(7% 5%, 87.5% 50.5%, 87.5% 94%, 7% 45.5%);
+}
+.card-c {
+  left: 40.909090909%;
+  top: 46.401295182%;
+  width: 43.265993266%;
+  clip-path: polygon(16.7% 4.37%, 82.08% 46.8%, 82.08% 95.5%, 16.7% 50.5%);
+}
+.person-a-0 {
+  left: 65.065282835%;
+  top: 31.640068757%;
+  width: 11.355921743%;
+}
+.person-a-1 {
+  left: 77.360063862%;
+  top: 52.639680455%;
+  width: 22.607022607%;
+}
+.person-b-0 {
+  left: 9.910892028%;
+  top: 75.083001912%;
+  width: 39.547368015%;
+}
+.person-c-0 {
+  left: 14.031494788%;
+  top: 25.995231762%;
+  width: 8.048410798%;
+}
+.person-c-1 {
+  left: 11.024878795%;
+  top: 44.554345086%;
+  width: 11.355921743%;
+}
+.person-c-2 {
+  left: 58.781270371%;
+  top: 28.924159479%;
+  width: 8.241084618%;
+}
+.person-c-3 {
+  left: 39.904648728%;
+  top: 54.131689631%;
+  width: 7.707325354%;
+}
+.person-b-extra {
+  left: 2.2%;
+  top: 22%;
+  width: 11.8%;
+}
+
+/* 4. 카드와 관람객에 같은 이동을 적용합니다. */
+.group-a .card-motion, .group-a .visitors {
+  animation: move-a 10s ease-in-out infinite;
+}
+.group-b .card-motion, .group-b .visitors {
+  animation: move-b 8.888888889s ease-in-out infinite;
+}
+.group-c .card-motion, .group-c .visitors {
+  animation: move-c 10.83333333s ease-in-out infinite;
+}
+/* AI로 계산한 35도 이동값: 세로 이동 = 가로 이동 × tan(35도).
+   가로값은 포스터 너비, 세로값은 높이를 기준으로 %로 바꿨습니다. */
+@keyframes move-a {
+0%, 100% {
+  transform: translate(0, 0);
+}
+50% {
+  transform: translate(11.7845117845%, -14.7206315005%);
+}
+}
+@keyframes move-b {
+0%, 100% {
+  transform: translate(0, 0);
+}
+50% {
+  transform: translate(30.3030303030%, 37.8530524299%);
+}
+}
+@keyframes move-c {
+0%, 100% {
+  transform: translate(0, 0);
+}
+50% {
+  transform: translate(-33.6700336700%, -42.0589471443%);
+}
+}
+
+/* 5. 마우스를 올리면 함께 멈추고 관람객이 나타납니다. */
+.is-paused .card-motion, .is-paused .visitors {
+  animation-play-state: paused;
+}
+.is-paused .visitors {
+  opacity: 1;
+}
+
+/* 작은 화면과 움직임 줄이기 설정 */
 @supports (height: 100dvh) {
- body { height: 100dvh; }
- .poster { width: min(100vw, calc(100dvh * 2048 / 1148)); }
+body {
+  height: 100dvh;
 }
-.background { z-index: 0; position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
-.card { position: absolute; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.card-image { display: block; width: 100%; height: auto; pointer-events: none; user-select: none; }
-
-.card:focus-visible { filter: drop-shadow(0 0 3px #333); outline: none; }
-/* 관람객은 같은 그룹의 카드와 함께 이동하며, 모든 카드 뒤에 표시됩니다. */
-.visitors { position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .6s ease; pointer-events: none; }
-.visitors.is-visible { opacity: 1; }
-.person { position: absolute; display: block; height: auto; pointer-events: none; user-select: none; }
-
-/* A: 수평선 기준 -35도, dy = dx × tan(angle). */
-.card-a { left: 71.885521886%; top: 5.405976138%; width: 22.558922559%; z-index: 2; clip-path: polygon(17% 4%, 89% 32%, 89% 74%, 14% 100%, 14% 58%, 32% 51%, 17% 45%); }
-
-
-/* B: 수평선 기준 35도, dy = dx × tan(angle). */
-.card-b { left: 22.138047138%; top: -10.962118279%; width: 39.393939394%; z-index: 3; clip-path: polygon(7% 5%, 87.5% 50.5%, 87.5% 94%, 7% 45.5%); }
-
-
-/* C: 수평선 기준 35도, dy = dx × tan(angle). */
-.card-c { left: 40.909090909%; top: 46.401295182%; width: 43.265993266%; z-index: 4; clip-path: polygon(16.7% 4.37%, 82.08% 46.8%, 82.08% 95.5%, 16.7% 50.5%); }
-
-.person-a-0 { left: 65.065282835%; top: 31.640068757%; width: 11.355921743%; }
-.person-a-1 { left: 77.360063862%; top: 52.639680455%; width: 22.607022607%; }
-.person-b-0 { left: 9.910892028%; top: 75.083001912%; width: 39.547368015%; }
-.person-c-0 { left: 14.031494788%; top: 25.995231762%; width: 8.048410798%; }
-.person-c-1 { left: 11.024878795%; top: 44.554345086%; width: 11.355921743%; }
-.person-c-2 { left: 58.781270371%; top: 28.924159479%; width: 8.241084618%; }
-.person-c-3 { left: 39.904648728%; top: 54.131689631%; width: 7.707325354%; }
-
-@media (prefers-reduced-motion: reduce) { .card { animation: none; } .visitors { transition: none; } }
-
-/* 이동값 계산: 기준 화면 1188 × 665.953125px에서
-   A: dx=140, dy=140*tan(-35°)=-98.0291px
-   B: dx=360, dy=360*tan(35°)=252.0747px
-   C: dx=-400, dy=-400*tan(35°)=-280.0830px
-   x는 화면 너비, y는 화면 높이로 나누어 %로 변환했습니다.
-   카드와 관람객에 같은 translate를 적용해 그룹 위치를 유지합니다. */
-/* 그룹 자체는 stacking context를 만들지 않습니다.
-   두 이동 레이어는 포스터 전체 크기라 같은 translate %가 같은 거리가 됩니다. */
-.card-group { display: contents; }
-.card-motion { position: absolute; inset: 0; pointer-events: none; }
-.card-motion .card { pointer-events: auto; }
-.card-group > .card-motion,
-.card-group > .visitors { animation: group-travel var(--duration) ease-in-out infinite; }
-.card-group.is-paused > .card-motion,
-.card-group.is-paused > .visitors { animation-play-state: paused; }
-@keyframes group-travel {
- 0%, 100% { transform: translate(0, 0); }
- 50% { transform: translate(var(--move-x), var(--move-y)); }
+.poster {
+  width: min(100vw, calc(100dvh * 2048 / 1148));
 }
-.group-a { --duration: 10s; --move-x: 11.7845117845%; --move-y: -14.7206315005%; }
-.group-a > .card-motion { z-index: 2; }
-.group-b { --duration: 8.888888889s; --move-x: 30.3030303030%; --move-y: 37.8530524299%; }
-.group-b > .card-motion { z-index: 3; }
-.group-c { --duration: 10.83333333s; --move-x: -33.6700336700%; --move-y: -42.0589471443%; }
-.group-c > .card-motion { z-index: 4; }
-@media (prefers-reduced-motion: reduce) { .card-group > .card-motion, .card-group > .visitors { animation: none; } }
-
-/* B카드 왼쪽 추가 관람객: 같은 그룹과 이동하며 카드 뒤에 표시됩니다. */
-.person-b-extra { left: 2.2%; top: 22%; width: 11.8%; }
+}
+@media (prefers-reduced-motion: reduce) {
+.card-group .card-motion, .card-group .visitors {
+  animation: none;
+}
+.visitors {
+  transition: none;
+}
+}
