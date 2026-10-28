@@ -32,7 +32,7 @@ body {
 .card {
   display: contents;
 }
-.artwork, .people {
+.moving, .people {
   position: absolute;
   top: 0;
   left: 0;
@@ -57,9 +57,9 @@ body {
   display: block;
   height: auto;
 }
-.card-a .artwork { z-index: 2; }
-.card-b .artwork { z-index: 3; }
-.card-c .artwork { z-index: 4; }
+.card-a .moving { z-index: 2; }
+.card-b .moving { z-index: 3; }
+.card-c .moving { z-index: 4; }
 
 /* 카드와 사람 위치 */
 
@@ -160,7 +160,7 @@ body {
 }
 
 /* 마우스를 올리면 정지하고 사람이 나타납니다. */
-.card.is-paused .artwork, .card.is-paused .people {
+.card.is-paused .moving, .card.is-paused .people {
   animation-play-state: paused;
 }
 .card.is-paused .people {
@@ -169,7 +169,7 @@ body {
 
 /* 움직임 줄이기 설정 */
 @media (prefers-reduced-motion: reduce) {
-  .card .artwork, .card .people {
+  .card .moving, .card .people {
     animation: none;
   }
   .people {
