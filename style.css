@@ -8,17 +8,13 @@ html, body {
   height: 100%;
 }
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   background: #b5b5b5;
 }
 .poster {
   position: relative;
-  width: 100vw;
-  max-width: calc(100vh * 2048 / 1148);
-  aspect-ratio: 2048 / 1148;
+  width: 2048px;
+  height: 1148px;
+  margin: 0 auto;
   overflow: hidden;
   z-index: 0;
 }
@@ -171,15 +167,7 @@ body {
   opacity: 1;
 }
 
-/* 작은 화면과 움직임 줄이기 설정 */
-@supports (height: 100dvh) {
-  body {
-    height: 100dvh;
-  }
-  .poster {
-    max-width: calc(100dvh * 2048 / 1148);
-  }
-}
+/* 움직임 줄이기 설정 */
 @media (prefers-reduced-motion: reduce) {
   .card .artwork, .card .people {
     animation: none;
