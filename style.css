@@ -147,7 +147,7 @@ body {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(30.3030303030%, 33.9494563980%);
+    transform: translate(30.3030303030%, 32.7034432408%);
   }
 }
 @keyframes move-c {
@@ -155,7 +155,7 @@ body {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(-33.6700336700%, -37.7216182200%);
+    transform: translate(-33.6700336700%, -36.3371591565%);
   }
 }
 
