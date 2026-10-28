@@ -168,11 +168,4 @@ body {
 }
 
 
-@media (prefers-reduced-motion: reduce) {
-  .card .moving, .card .people {
-    animation: none;
-  }
-  .people {
-    transition: none;
-  }
-}
+
