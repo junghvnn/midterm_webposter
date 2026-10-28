@@ -123,13 +123,13 @@ body {
 }
 
 /* 카드별+사람 움직임 */
-.card-a .artwork, .card-a .people {
+.card-a .moving, .card-a .people {
   animation: move-a 14s ease-in-out infinite;
 }
-.card-b .artwork, .card-b .people {
+.card-b .moving, .card-b .people {
   animation: move-b 10s ease-in-out infinite;
 }
-.card-c .artwork, .card-c .people {
+.card-c .moving, .card-c .people {
   animation: move-c 12s ease-in-out infinite;
 }
 
